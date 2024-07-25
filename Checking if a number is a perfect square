@@ -1,0 +1,27 @@
+def isPerfectSquare(n):
+    # Base case: 0 and 1 are perfect squares
+    if n <= 1:
+        return True
+ 
+    # Initialize boundaries for binary search
+    left, right = 1, n
+ 
+    while left <= right:
+        # Calculate middle value
+        mid = left + (right - left) // 2
+ 
+        # Calculate square of the middle value
+        square = mid * mid
+ 
+        # If the square matches n, n is a perfect square
+        if square == n:
+            return True
+        # If the square is smaller than n, search the right half
+        elif square < n:
+            left = mid + 1
+        # If the square is larger than n, search the left half
+        else:
+            right = mid - 1
+ 
+    # If the loop completes without finding a perfect square, n is not a perfect square
+    return False
