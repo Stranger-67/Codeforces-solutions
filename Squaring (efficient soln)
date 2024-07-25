@@ -1,0 +1,22 @@
+# https://codeforces.com/contest/1995/problem/C
+from math import log, ceil
+ 
+t = int(input())
+ 
+for testcases in range(t):
+  n = int(input())
+  arr = [int(i) for i in input().split(" ")]
+  mult = 0
+  count = 0
+  ok = True
+  i = 0
+  while i < n and arr[i] == 1:
+    i += 1
+  while i < (n - 1):
+    i += 1
+    if arr[i] == 1 and arr[i - 1] != 1:
+      ok = False
+      break
+    mult = max(mult + ceil(log(log(arr[i - 1], arr[i]), 2)), 0)
+    count += mult
+  print (count if ok else -1)
